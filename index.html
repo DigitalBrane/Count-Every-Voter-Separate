@@ -1,0 +1,257 @@
+<style>
+ .autocomplete {
+  position: relative;
+  display: inline-block;
+  width: 500px;
+  max-width: 80%;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+  
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 25px;
+    right: 0;
+    max-height: 400px !important;
+    overflow: auto;
+}
+
+  
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+    font-size: 25px;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+.register_to_vote-form {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 26px;
+    margin-bottom: 42px;
+} 
+.register_to_vote-form #myCity{
+    background-color: #EFEFEF;
+    width: 100%;
+    padding: 15px 15px 15px 40px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    font-size: 30px;
+    font-weight: 400;
+    outline: none;
+}
+.register_to_vote-form #searchCounty{
+    background-color: #11528A;
+    padding: 15px 80px 15px 15px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    font-size: 30px;
+    font-weight: 400;
+    background-image: url('https://d3n8a8pro7vhmx.cloudfront.net/themes/6153387cc294802a797d67ad/attachments/original/1636883637/fa-solid_search.png?1636883637');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+.register_to_vote-search_result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    margin-bottom: 48px;
+}
+  .mobile-only{
+    display:none;
+  } 
+  
+ @media only screen and (max-width: 480px) {  
+    .register_to_vote-form #searchCounty {   
+      font-size: 17px;
+    }
+    .register_to_vote-form #myCity {
+      padding: 15px 5px 15px 16px;
+      font-size: 17px;
+
+    }
+    .mobile-only{
+      display:block;
+    }
+     .desktop-only{
+      display:none;
+    }
+  }
+ 
+ 
+ 
+@media only screen and (max-width: 575px) {
+.mapLocation{
+  zoom:60% !important;
+  margin: 0 auto;
+}
+}
+ 
+@media only screen and (max-width: 480px) {
+.mapLocation {
+  zoom:50% !important;
+  margin: 0 auto;
+}
+}
+ 
+@media only screen and (max-width: 370px) {
+.mapLocation {
+  zoom:49% !important;
+  margin: 0 auto;
+}
+}
+ 
+@media only screen and (max-width: 321px) {
+.mapLocation {
+  zoom: 42% !important;
+  margin: 0 auto;
+} 
+}
+ 
+@media screen and (max-width: 412px) and (min-width: 410px) {
+.mapLocation {
+  zoom: 52% !important;
+  margin: 0 auto;
+} 
+}
+  
+</style>
+
+
+<div class="container">
+  <section id="register_to_vote-form-container">
+    <!-- <iframe src="https://dos.elections.myflorida.com/supervisors/supervisor_elections.asp#county" style="border: none; width:100%; min-height: 850px; max-height: 80vh;"></iframe> -->
+
+ 		<!--Make sure the form has the autocomplete function switched off:-->
+    <form autocomplete="off" class="register_to_vote-form">
+      <div class="autocomplete" style="">
+        <input id="myCity" type="text" name="mycity" placeholder="Enter your city then hit search">
+      </div>
+      <input type="button" name="search" value="" id="searchCounty">
+    </form>
+    <div class="register_to_vote-search_result">
+      <div class="search_result-city"></div>
+      <div class="search_result-county"></div>
+      <div class="search_result-registration_link"></div>
+    </div>
+    
+    <div class="mapLocation" style="text-align:center;">
+      <!-- ImageReady Slices (soe-map.psd)
+      <img src="https://d3n8a8pro7vhmx.cloudfront.net/evc/pages/49/attachments/original/1636826225/soe-map.jpg?1636826225" width="705" height="661" border="0" alt="" usemap="#soe_map_Map">
+       -->
+     <img src="https://uploads-ssl.webflow.com/61f280e5f9ad94b642d99cd9/622b21f02282f5275d876cb5_soe-map.jpg" width="705" height="661" border="0" alt="" usemap="#soe_map_Map">
+      
+     <map name="soe_map_Map">
+        <area shape="poly" alt="Map of all counties with links to Supervisors of Elections" coords="689,563,677,596,648,617,622,635,590,639,563,640,564,627,601,619,604,628,647,610,663,584,673,575,683,562" target="_blank" href="javascript:void(0)">
+        <area shape="poly" alt="Alachua" coords="455,117, 470,118, 501,136, 501,163, 491,165, 486,159, 450,154, 449,128" target="_blank" href="https://alachua.electionsfl.org/vrservices/mbrs">
+        <area shape="poly" alt="Baker" coords="464,49, 481,51, 487,69, 497,69, 500,93, 465,93" target="_blank" href="https://www.bakerelections.com/Voter-Information/Vote-By-Mail-Voting/Absentee-Ballot-Request-Form">
+        <area shape="poly" alt="Bay" coords="199,58, 204,58, 206,123, 155,90, 153,77, 165,76, 198,71" target="_blank" href="https://www.bayvotes.org/Voter-Info/Vote-By-Mail">
+        <area shape="poly" alt="Bradford" coords="493,94, 500,94, 502,134, 470,117" target="_blank" href="https://www.bradfordelections.com/Voter-Information/Vote-By-Mail-Information-and-Request-Form/Vote-By-Mail-Request-Form">
+        <area shape="poly" alt="Brevard" coords="598,223, 620,228, 651,316, 611,322, 613,266" target="_blank" href="https://www.votebrevard.gov/Ballots-by-Mail/Request-A-Mail-Ballot">
+        <area shape="poly" alt="Broward" coords="620,470, 693,466, 692,501, 621,502" target="_blank" href="https://www.browardvotes.gov/Voter-Information/Vote-By-Mail-Voting">
+        <area shape="poly" alt="Calhoun" coords="228,53, 244,53, 228,93, 207,93, 206,58, 228,58" target="_blank" href="https://www.votecalhoun.com/Voters-Info/Request-an-Vote-by-Mail-Ballot-Online">
+        <area shape="poly" alt="Charlotte" coords="497,413, 514,406, 554,403, 557,429, 510,432" target="_blank" href="https://www.soecharlottecountyfl.gov/Vote-by-Mail/VBM-REQ-Module">
+        <area shape="poly" alt="Citrus" coords="443,211, 461,207, 485,214, 492,230, 485,242, 451,241" target="_blank" href="https://www.votecitrus.gov/Vote-by-Mail-and-Early-Voting/Click-Here-to-Order-Your-Vote-by-Mail-Ballot">
+        <area shape="poly" alt="Clay" coords="503,87, 531,87, 533,102, 544,122, 523,122, 504,133" target="_blank" href="https://www.clayelections.gov/Voter-Information/Request-a-Mail-Ballot">
+        <area shape="poly" alt="Collier" coords="558,454, 583,456, 586,482, 620,479, 621,526, 573,526, 544,507, 533,476, 554,476" target="_blank" href="https://www.colliervotes.gov/Voters/Vote-by-Mail/Online-Vote-by-Mail-Request">
+        <area shape="poly" alt="Columbia" coords="439,49, 462,50, 463,100, 453,110, 455,115, 448,128, 443,125, 436,117, 433,77, 444,74" target="_blank" href="https://www.votecolumbia.com/Voter-Info/Vote-By-Mail">
+        <area shape="poly" alt="Miami-Dade" coords="620,502,692,501,679,564,628,592" target="_blank" href="https://miamidade.electionsfl.org/vrservices/mbrs">
+        <area shape="poly" alt="DeSoto" coords="513,376, 552,376, 552,401, 513,404" target="_blank" href="https://www.votedesoto.com/Voter-Info/Vote-by-Mail">
+        <area shape="poly" alt="Dixie" coords="387,130, 425,129, 420,144, 422,151, 407,182, 382,159, 382,146" target="_blank" href="https://www.votedesoto.com/Voter-Info/Vote-by-Mail">
+        <area shape="poly" alt="Duval" coords="527,49, 549,51, 557,77, 554,94, 531,85, 501,87, 500,76" target="_blank" href="https://www.duvalelections.com/Voter-Information/Vote-By-Mail/Electronic-Ballot-Request">
+        <area shape="poly" alt="ESCAMBIA" coords="45,85,6,94,6,13,45,15,31,31,42,61" target="_blank" href="https://escambia.electionsfl.org/vrservices/mbrs">
+        <area shape="poly" alt="Flagler" coords="548,144, 574,138, 585,162, 579,178, 558,178" target="_blank" href="https://www.flaglerelections.com/Vote-By-Mail-Absentee">
+        <area shape="poly" alt="Franklin" coords="244,113, 295,116, 297,124, 225,148, 224,143, 239,136" target="_blank" href="https://www.votefranklin.com/Voter-Information/Vote-by-Mail/Request-Vote-by-Mail">
+        <area shape="poly" alt="Gadsden" coords="252,41, 301,43, 300,49, 292,65, 271,72, 250,53, 246,52" target="_blank" href="https://www.gadsdensoe.com/Login?returnurl=%2fVote-By-Mail-Ballot-Information%2fVote-By-Mail-Ballot-Request-Form">
+        <area shape="poly" alt="Gilchrist" coords="427,122, 437,119, 448,131, 448,153, 424,150, 421,143" target="_blank" href="https://www.votegilchrist.com/Vote-By-Mail">
+        <area shape="poly" alt="Glades" coords="557,403, 582,401, 591,385, 617,386, 601,407, 601,426, 560,429" target="_blank" href="https://www.voteglades.com/vrservices/MBRS">
+        <area shape="poly" alt="Gulf" coords="207,96,225,96,225,110,239,120,236,137,213,147,213,133,207,124" target="_blank" href="https://www.votegulf.com/Voting-Information/Request-Mail-Ballot">
+        <area shape="poly" alt="Hamilton" coords="392,45, 438,49, 443,74, 433,75, 420,66, 400,68" target="_blank" href="https://www.hamiltonvotes.com/Request-Mail-Ballot">
+        <area shape="poly" alt="Hardee" coords="513,344, 513,344, 554,344, 554,375, 511,375" target="_blank" href="https://www.hardeecountyelections.com/Absentee-Ballot/Request-a-Absentee-Ballot">
+        <area shape="poly" alt="Hendry" coords="558,429, 620,426, 619,479, 586,480, 585,454, 558,454" target="_blank" href="https://www.hendryelections.org/Vote-By-Mail/Absentee-Ballot-Request-Form">
+        <area shape="poly" alt="Hernando" coords="451,241, 488,244, 505,260, 487,264, 451,266" target="_blank" href="https://www.hernandovotes.gov/Ways-to-Vote/Vote-by-Mail/Request-Vote-By-Mail-Ballot">
+        <area shape="poly" alt="Highlands" coords="555,342, 591,344, 586,354, 608,382, 589,385, 582,401, 554,401" target="_blank" href="https://www.votehighlands.com/Vote-by-Mail-VBM/VBM-Request">
+        <area shape="poly" alt="Hillsborough" coords="456,294, 510,291, 511,344, 463,344" target="_blank" href="https://www.votehillsborough.gov/VOTERS/Vote-By-Mail-Online-Request">
+        <area shape="poly" alt="Holmes" coords="147,14, 193,13, 193,17, 188,24, 184,41, 167,36, 163,42, 146,40" target="_blank" href="https://www.holmeselections.com/3-Ways-to-Vote/Vote-By-Mail-Absentee/Vote-By-Mail-Form">
+        <area shape="poly" alt="Indian River" coords="614,322, 651,317, 663,347, 624,347, 624,338, 614,339" target="_blank" href="https://www.voteindianriver.gov/Vote-By-Mail/Request-To-Vote-By-Mail">
+        <area shape="poly" alt="Jackson" coords="195,13, 238,13, 252,42, 243,52, 227,52, 226,57, 199,58, 199,35, 188,28" target="_blank" href="https://www.jacksoncountysoe.org/Vote-By-Mail-and-Absentee-Ballots/Request-an-Absentee-Vote-by-Mail-Ballot">
+        <area shape="poly" alt="Jefferson" coords="327,44, 361,47, 345,83, 327,101, 322,101, 323,63, 332,60" target="_blank" href="https://www.jeffersonvotes.com/Voter-Information/Vote-By-Mail-Absentee-Voting">
+        <area shape="poly" alt="Lafayette" coords="385,83, 396,83, 394,97, 401,101, 426,124, 425,128, 386,128" target="_blank" href="https://www.lafayettevotes.net/Home/Request-Absentee-Ballot">
+        <area shape="poly" alt="Lake" coords="539,180, 566,220, 561,228, 540,228, 544,270, 515,271, 514,212, 540,212" target="_blank" href="https://www.lakevotes.com/Voter-Information/Vote-By-Mail/Mail-Ballot-Request">
+        <area shape="poly" alt="Lee" coords="507,433, 557,429, 557,463, 551,463, 551,476, 535,476, 505,433" target="_blank" href="https://www.lee.vote/Vote-by-Mail/Vote-by-Mail-Information/Request-a-Vote-by-Mail-Ballot">
+        <area shape="poly" alt="Leon" coords="302,43, 324,44, 329,60, 322,62, 320,84, 267,82, 273,74, 294,65" target="_blank" href="https://www.leonvotes.gov/YourVoterinfo">
+        <area shape="poly" alt="Levy" coords="425,151, 473,162, 472,187, 460,187, 461,206, 442,209, 408,182" target="_blank" href="https://www.votelevy.com/Vote-by-Mail">
+        <area shape="poly" alt="Liberty" coords="244,53, 246,53, 270,76, 265,88, 270,100, 279,114, 241,111, 238,116, 227,107, 227,94" target="_blank" href="https://www.libertyelections.com/Voter-Information/-Absentee-Voting/-Absentee-Voting-Info">
+        <area shape="poly" alt="Madison" coords="362,47, 389,47, 399,70, 395,83, 346,81" target="_blank" href="https://www.votemadison.com/Voting-Methods/Absentee-Request-Form">
+        <area shape="poly" alt="Manatee" coords="463,344, 511,345, 511,388, 494,388, 495,372, 448,372" target="_blank" href="https://www.votemanatee.com/Vote-By-Mail-Early-Voting/Vote-By-Mail-Ballot-Request-Online">
+        <area shape="poly" alt="Marion" coords="474,161, 486,160, 491,168, 507,161, 535,174, 537,211, 483,213, 462,206, 463,188, 475,188" target="_blank" href="https://www.votemarion.gov/mbrs">
+        <area shape="poly" alt="Martin" coords="635,389, 645,407, 692,403, 680,382, 633,384" target="_blank" href="https://www.martinvotes.com/vote-by-mail-information/">
+        <area shape="poly" alt="Monroe" coords="573,527, 623,526, 626,592, 577,554" target="_blank" href="https://www.keys-elections.org/Voters/Request-an-Absentee">
+        <area shape="poly" alt="Nassau" coords="506,22, 494,34, 501,48, 500,75, 525,48, 549,49, 548,32" target="_blank" href="https://www.votenassaufl.gov/vote-by-mail-request-form">
+        <area shape="poly" alt="Okaloosa" coords="80,15, 116,15, 115,72, 104,79, 81,82" target="_blank" href="https://www.govote-okaloosa.com/Ways-to-Vote/Vote-By-Mail/Mail-Ballot-Request-Form">
+        <area shape="poly" alt="Okeechobee" coords="595,344, 620,344, 623,350, 633,348, 633,391, 610,381, 588,353" target="_blank" href="https://www.voteokeechobee.com/-Voter--Education/Mail-Absentee-Ballot-Request">
+        <area shape="poly" alt="Orange" coords="540,228, 560,229, 555,243, 600,244, 611,268, 544,270" target="_blank" href="https://www.ocfelections.com/vote-mail-request">
+        <area shape="poly" alt="Osceola" coords="544,270, 611,269, 613,339, 592,341" target="_blank" href="https://www.voteokeechobee.com/-Voter--Education/Mail-Absentee-Ballot-Request">
+        <area shape="poly" alt="Palm Beach" coords="643,407, 692,404, 693,466, 620,469, 620,431" target="_blank" href="https://palmbeach.electionsfl.org/vrservices/mbrs">
+        <area shape="poly" alt="Pasco" coords="449,266, 492,265, 505,261, 502,292, 440,295" target="_blank" href="https://www.pascovotes.gov/Vote-by-Mail/Request-a-Ballot-2">
+        <area shape="poly" alt="Pinellas" coords="439,295, 454,295, 460,342, 436,347" target="_blank" href="https://www.votepinellas.com/VoteByMail">
+        <area shape="poly" alt="Polk" coords="516,273, 542,273, 592,341, 513,344" target="_blank" href="https://www.polkelections.com/Mail-in-Ballot-Request-Form">
+        <area shape="poly" alt="Putnam" coords="502,134, 503,158, 544,171, 555,167, 546,142, 542,122, 521,123" target="_blank" href="https://soe.putnam-fl.com/VBM-Hidden-Menu-Items/Request-an-Mail-Absentee-Ballot">
+        <area shape="poly" alt="Santa Rosa" coords="48,15, 80,15, 80,84, 48,84, 44,58, 34,31" target="_blank" href="https://www.votesantarosa.com/Voter-Information/Vote-by-Mail">
+        <area shape="poly" alt="Sarasota" coords="457,372, 492,375, 492,389, 511,389, 513,404, 482,416" target="_blank" href="https://www.sarasotavotes.com/Voter-Information/MBRS">
+        <area shape="poly" alt="Seminole" coords="568,221, 595,225, 599,242, 558,242" target="_blank" href="https://www.voteseminole.org/vote-by-mail">
+        <area shape="poly" alt="St. Lucie" coords="635,347, 663,347, 677,382, 633,384" target="_blank" href="https://www.slcelections.com/VOTE-BY-MAIL/Absentee-Request-Form-Lookup/Vote-By-Mail">
+        <area shape="poly" alt="St. Johns" coords="558,79, 573,137, 562,142, 549,142, 544,121, 532,95, 553,94" target="_blank" href="https://www.votesjc.gov/Election-Information/Vote-By-Mail - requesting">
+        <area shape="poly" alt="Sumter" coords="486,214, 513,213, 515,279, 507,277, 507,256, 488,242, 494,229" target="_blank" href="https://www.sumterelections.org/Vote-By-Mail-Request">
+        <area shape="poly" alt="Suwannee" coords="400,68, 421,66, 432,77, 436,118, 425,121, 402,98, 395,97" target="_blank" href="https://www.suwanneevotes.com/Voting-Methods/Vote-by-Mail-Ballot">
+        <area shape="poly" alt="Taylor" coords="346,82, 383,84, 385,143, 375,145, 350,117, 328,103" target="_blank" href="https://www.taylorelections.com/Absentee-Information/Absentee-Request-Form">
+        <area shape="poly" alt="Union" coords="465,94, 492,95, 469,116, 456,116, 455,109, 465,101" target="_blank" href="https://www.unionflvotes.com/Vote-by-Mail-Information/Absentee-Request-Form">
+        <area shape="poly" alt="Volusia" coords="537,176, 554,169, 557,180, 581,181, 586,163, 615,225, 588,221, 567,220" target="_blank" href="https://volusia.electionsfl.org/vrservices/mbrs">
+        <area shape="poly" alt="Wakulla" coords="267,83, 321,85, 321,102, 296,114, 279,113, 265,88" target="_blank" href="https://www.wakullaelection.com/Voter-Information/Request-a-Mail-Ballot">
+        <area shape="poly" alt="Walton" coords="119,15, 145,16, 146,43, 162,44, 159,58, 161,71, 150,71, 153,90, 117,79" target="_blank" href="https://www.votewalton.com/Voting/Ways-to-Vote/Mail-Ballot-Request-Form">
+        <area shape="poly" alt="Washington" coords="187,29, 198,37, 198,60, 195,71, 162,74, 160,56, 169,38, 185,43" target="_blank" href="https://www.wcsoe.org/Voter-Information/absentee-mail-ballot-request">
+
+      </map>
+    </div>
+
+
+
+
+  </section>
+</div>
